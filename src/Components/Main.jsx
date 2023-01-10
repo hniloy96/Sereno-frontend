@@ -1,22 +1,18 @@
-import './App.css';
+import './Main.css';
 import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player';
-import Home from './Pages/Home-page';
-import Profile from './Pages/Profile-page';
-import Feed from './Pages/Feed-page'
-import SIGNUP from './Pages/Signup-page'
-import LOGIN from './Pages/Login-page'
+import Home from '../Pages/Home-page';
+import Profile from '../Pages/Profile-page';
+import Feed from '../Pages/Feed-page'
 
 import Nav from './Components/Nav';
 
-function App() {
+function Main() {
   return (
     <div className='App'>
       <div className="Side-bar">
          <Routes>
-          <Route path='/signup' element={ < SIGNUP />} />
-          <Route path='/login' element={ < LOGIN />} />
           <Route path="/" element={<Home />} />
           <Route path="/feed" element={<Feed />} />
 
@@ -35,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;

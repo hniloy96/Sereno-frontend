@@ -71,3 +71,17 @@ code {
   cursor: pointer;
   
 }
+
+.Big-post {
+  color: white;
+  background-color: #404258;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  border-radius: 25px;
+
+}

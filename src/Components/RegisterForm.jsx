@@ -27,7 +27,7 @@ const RegisterForm = ({ signUp }) => {
     return (
         <section>
             <form className="signup-form" onSubmit={handleSubmit}>
-                <h1 className="form-title">Sing Up</h1>
+                <h1 className="form-title">Sign Up</h1>
                 <label htmlFor='username'>
                     <input
                         className="username"

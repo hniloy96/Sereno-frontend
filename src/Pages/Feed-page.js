@@ -64,9 +64,12 @@ const Feed = (props) => {
                 <section className="posts-list">
                     {posts?.map((post) => {
                         return (
-                            <div className="post-card" key={post._id}>
-                                <h1>{post.body}</h1>
-                            </div>
+                            <Link className="individual" key={post._id} to={`/post/${post._id}`}>
+                                <div className="post-card" >
+                                    <h1>{post.body}</h1>
+                                </div>
+                            </Link>
+                            
 
                         )
                     })

@@ -34,8 +34,6 @@ function Signup(props) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Accept: "application/json",
-                    "Access-Control-Allow-Origin": "*"
                 },
                 body: JSON.stringify(currentState)
             }
@@ -50,96 +48,100 @@ function Signup(props) {
                 lastname: "",
                 dob: "",
             })
+            navigate('/')
         } catch (err) {
             console.log(err)
         } 
-        finally {
-           navigate('/')
-    
-        }
-
     }
 
 
     return (
         <section className="Signin-content-container ">
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='username'>
-                    User Name
+            
+            <form className="signup-form" onSubmit={handleSubmit}>
+                <h1 className="form-title">Sing up</h1>
+                <label  htmlFor='username'>
                     <input
+                        className="username"
                         type='text'
                         id='username'
                         name="username"
                         placeholder="User Name"
                         value={newForm.username}
                         onChange={handleChange}
-
-                    />
-                </label>
-                <label htmlFor='email'>
-                    Email
-                    <input
-                        type='text'
-                        id='email'
-                        name="email"
-                        placeholder="Email Address"
-                        value={newForm.email}
-                        onChange={handleChange}
+                        required
 
                     />
                 </label>
                 <label htmlFor='password'>
-                    Password
                     <input
+                        className="username"
                         type='password'
                         id='password'
                         name="password"
                         placeholder="Enter Password"
                         value={newForm.password}
                         onChange={handleChange}
+                        required
+
+                    />
+                </label>
+                <label htmlFor='email'>
+                    <input
+                        className="email"
+                        type='text'
+                        id='email'
+                        name="email"
+                        placeholder="Email Address"
+                        value={newForm.email}
+                        onChange={handleChange}
+                        required
 
                     />
                 </label>
                 <label htmlFor='firstname'>
-                    First Name
                     <input
+                        className="username"
                         type='text'
                         id="firstname"
                         name="firstname"
                         placeholder="First Name"
                         value={newForm.firstname}
                         onChange={handleChange}
+                        required
 
                     />
                 </label>
                 <label htmlFor='lastname'>
-                    Last Name
                     <input
+                        className="username"
                         type='text'
                         id="lastname"
                         name="lastname"
                         placeholder="Last Name"
                         value={newForm.lastname}
                         onChange={handleChange}
+                        required
 
                     />
                 </label>
-                <label htmlFor='image'>
-                    Date
+                <label htmlFor='date'>
                     <input
+                        className="username"
                         type='date'
                         id="dob"
                         name="dob"
                         placeholder="Date of Birth"
                         value={newForm.dob}
                         onChange={handleChange}
+                        required
 
                     />
                 </label>
                 <input
+                    className="submit"
                     type="submit"
-                    value="Submit"
+                    value="Sign Up"
                 />
             </form>
         </section>

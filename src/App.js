@@ -7,29 +7,22 @@ import Profile from './Pages/Profile-page';
 import Feed from './Pages/Feed-page'
 import SIGNUP from './Pages/Signup-page'
 import LOGIN from './Pages/Login-page'
-
 import Nav from './Components/Nav';
 
 function App() {
   return (
     <div className='App'>
-      <div className="Side-bar">
+      <div className="page">
          <Routes>
           <Route path='/signup' element={ < SIGNUP />} />
           <Route path='/login' element={ < LOGIN />} />
           <Route path="/" element={<Home />} />
           <Route path="/feed" element={<Feed />} />
-
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        <div className="nav-bar">
-          <Nav />
-        </div>
+      
 
       </div>
-      <audio className='player' controls/>
-    
-     
     </div>
     
   );

@@ -2,14 +2,15 @@ import { useState, useEffect } from "react"
 import './Feed-page.css'
 import { Link } from "react-router-dom"
 import Nav from "../Components/Nav"
+import { getUserToken } from "../utilities/authToken"
 
 const Feed = (props) => {
 
+    const token = getUserToken()
     const [posts, setPosts] = useState([])
     const [newForm, setNewForm] = useState({
-        name: "",
-        image: "",
-        title: ""
+        body: "",
+        comments: [],
     })
 
     const BASE_URL = "http://localhost:4000/posts/"
@@ -26,6 +27,37 @@ const Feed = (props) => {
         }
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const currentState = { ...newForm }
+        try {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(currentState)
+            }
+            const response = await fetch(BASE_URL, requestOptions)
+            const createdPost = await response.json()
+            setPosts([...posts, createdPost])
+            setNewForm({
+                body: "",
+                comments: []
+            })
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const handleChange = (e) => {
+        const userInput = { ...newForm }
+        userInput[e.target.name] = e.target.value
+        setNewForm(userInput)
+    }
+
     const loaded = () => {
         return (
             <>
@@ -35,7 +67,6 @@ const Feed = (props) => {
                             <div className="post-card" key={post._id}>
                                 <h1>{post.body}</h1>
                             </div>
-
 
                         )
                     })
@@ -64,20 +95,23 @@ const Feed = (props) => {
         <div className="page">
             <div className="Feed-content-container">
                 <div className="create-post">
-                    <h2>Post</h2>
-                    <form>
-                        <label htmlFor='post'>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor='body'>
                             <input
+                                className="post-box"
                                 type='text'
-                                id="name"
-                                name="name"
-                                placeholder="Share your thoughts"
-                                value={newForm.name}
+                                id="body"
+                                name="body"
+                                placeholder="What's in your mind?"
+                                value={newForm.body}
+                                onChange={handleChange}
+                                required
                             />
                         </label>
                         <input
+                        className="submit"
                             type="submit"
-                            value="Submit"
+                            value="Create Post"
                         />
                     </form>
                 </div>

@@ -1,8 +1,30 @@
 .Home-content-container {
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-content: center;
     width: 75%;
     height: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
   }
+.tile {
+  margin-top: 100px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #404258;
+  background-color: #404258;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  justify-content: center;
+
+}
+.image {
+  width: 150px;
+  height: auto;
+}
+
+.text {
+  color: white;
+}

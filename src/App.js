@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home-page';
-import Profile from './Pages/Profile-page';
 import Feed from './Pages/Feed-page';
 import SIGNUP from './Pages/Sign-upAuth';
 import LOGIN from './Pages/Log-inAuth';
@@ -31,7 +30,6 @@ function App() {
           <Route path='/signup' element={ < SIGNUP />} />
           <Route path='/home' element={< Home />} />
           <Route path="/feed" element={<Feed />} />
-          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
       </UserInfo>

@@ -50,8 +50,8 @@ function Auth() {
         <div>
             <div className="Signin-content-container">
                 <RegisterForm signUp={registerUser} />
-                <Link to='/'>
-                    <h3>Log in</h3>
+                <Link className='link-container' to='/'>
+                    <h3 className='link'>Log in Here</h3>
                 </Link>
             </div>
         </div>

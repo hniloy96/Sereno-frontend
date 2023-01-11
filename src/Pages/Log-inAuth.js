@@ -52,9 +52,9 @@ function Auth() {
   return (
         <div>
             <div className="Signin-content-container">
-                <LoginForm logIn={loginUser} />
-                <Link to='/signup'>
-                    <h3>Sign Up</h3>
+                <LoginForm  logIn={loginUser} />
+                <Link className='link-container' to='/signup'>
+                    <h3 className='link'>Sign Up Here</h3>
                 </Link>
             </div>
             

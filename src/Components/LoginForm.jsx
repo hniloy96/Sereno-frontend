@@ -13,7 +13,7 @@ const LoginForm = ({ logIn }) => {
         const createdUserToken = await logIn(input)
 
         if (createdUserToken) {
-            navigate("/home")
+            navigate("/feed")
         } else {
             navigate("/")
         }

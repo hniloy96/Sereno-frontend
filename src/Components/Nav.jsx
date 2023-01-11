@@ -3,17 +3,14 @@ import { Link } from "react-router-dom";
 const Nav = (props) => {
     return (
         <div className="nav-list">
-            <Link to="/">
-                <h1 className="list-items">SERENO/LOGO</h1>
+            <Link to="/feed">
+                <h1 className="list-items">SERENO</h1>
             </Link>
-            <Link to="/">
+            <Link to="/home">
                 <div className="list-items">Home</div>
             </Link>
             <Link to="/feed">
                 <div className="list-items">Feed</div>
-            </Link>
-            <Link to="/profile">
-                <div className="list-items">Pofile</div>
             </Link>
         </div>
     );

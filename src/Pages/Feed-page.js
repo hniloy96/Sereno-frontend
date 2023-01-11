@@ -32,7 +32,7 @@ const Feed = (props) => {
                 <section className="posts-list">
                     {posts?.map((post) => {
                         return (
-                            <div className="posts-card" key={post._id}>
+                            <div className="post-card" key={post._id}>
                                 <h1>{post.body}</h1>
                             </div>
 
@@ -63,7 +63,7 @@ const Feed = (props) => {
     return (
         <div className="page">
             <div className="Feed-content-container">
-                <div>
+                <div className="create-post">
                     <h2>Post</h2>
                     <form>
                         <label htmlFor='post'>

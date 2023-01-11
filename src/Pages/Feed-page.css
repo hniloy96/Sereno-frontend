@@ -1,8 +1,28 @@
 .Feed-content-container {
+  text-align: center;
   border: 2px solid black;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 75%;
   height: 850px;
+}
+
+.create-post {
+  border: 2px solid black;
+  width: 600px;
+  text-align: left;
+  margin-top: 50px;
+  border-radius: 20px;
+}
+
+.posts-list {
+  
+}
+
+.post-card {
+  border: 5px solid red;
+  width: 500px;
+  margin: 10px;
+  border-radius: 20px;
 }

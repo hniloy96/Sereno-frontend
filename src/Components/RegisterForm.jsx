@@ -1,73 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import './signin.css'
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
+const RegisterForm = ({ signUp }) => {
 
-function Signup(props) {
-
+    const initialState = { username: "", password: "" }
+    const [input, setInput] = useState(initialState)
     const navigate = useNavigate()
-    const [newForm, setNewForm] = useState({
-        username: "",
-        email: "",
-        password: "",
-        firstname: "",
-        lastname: "",
-        dob: "",
-
-    })
-
-    const URL = "http://localhost:4000/user/register"
-
-
-    function handleChange(e) {
-        const userInput = { ...newForm };
-        userInput[e.target.name] = e.target.value;
-        console.log(e.target.name, e.target.value);
-        setNewForm(userInput);
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const currentState = { ...newForm }
-        try {
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(currentState)
-            }
-            const response = await fetch(URL, requestOptions)
-            const createdUser = await response.json()
-            console.log(createdUser)
-            setNewForm({
-                username: "",
-                email: "",
-                password: "",
-                firstname: "",
-                lastname: "",
-                dob: "",
-            })
-            navigate('/')
-        } catch (err) {
-            console.log(err)
-        } 
-    }
+        const createdUserToken = await signUp(input)
+
+        if (createdUserToken) {
+            navigate("/home")
+        } else {
+            navigate("/")
+        }
+        setInput(initialState);
+    };
+
+    const handleChange = (e) => {
+        setInput({ ...input, [e.target.name]: e.target.value });
+    };
 
 
     return (
-        <section className="Signin-content-container ">
-            
+        <section>
             <form className="signup-form" onSubmit={handleSubmit}>
-                <h1 className="form-title">Sing up</h1>
-                <label  htmlFor='username'>
+                <h1 className="form-title">Sing Up</h1>
+                <label htmlFor='username'>
                     <input
                         className="username"
                         type='text'
                         id='username'
                         name="username"
                         placeholder="User Name"
-                        value={newForm.username}
+                        value={input.username}
                         onChange={handleChange}
                         required
 
@@ -80,7 +48,7 @@ function Signup(props) {
                         id='password'
                         name="password"
                         placeholder="Enter Password"
-                        value={newForm.password}
+                        value={input.password}
                         onChange={handleChange}
                         required
 
@@ -93,7 +61,7 @@ function Signup(props) {
                         id='email'
                         name="email"
                         placeholder="Email Address"
-                        value={newForm.email}
+                        value={input.email}
                         onChange={handleChange}
                         required
 
@@ -106,7 +74,7 @@ function Signup(props) {
                         id="firstname"
                         name="firstname"
                         placeholder="First Name"
-                        value={newForm.firstname}
+                        value={input.firstname}
                         onChange={handleChange}
                         required
 
@@ -119,7 +87,7 @@ function Signup(props) {
                         id="lastname"
                         name="lastname"
                         placeholder="Last Name"
-                        value={newForm.lastname}
+                        value={input.lastname}
                         onChange={handleChange}
                         required
 
@@ -132,7 +100,7 @@ function Signup(props) {
                         id="dob"
                         name="dob"
                         placeholder="Date of Birth"
-                        value={newForm.dob}
+                        value={input.dob}
                         onChange={handleChange}
                         required
 
@@ -148,4 +116,4 @@ function Signup(props) {
     )
 }
 
-export default Signup
+export default RegisterForm

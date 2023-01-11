@@ -1,0 +1,46 @@
+.album{
+  width: 219px;
+  height: 297px;
+  background-color: #2A2A2A;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+}
+  .albumText{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      padding: 5px;
+  }
+  .coverPhoto{
+  border-radius: 5px;
+  padding: 20px;
+  }
+  img{
+  height: 187px;
+  width: 187px;
+  margin-bottom: 10px;
+  }
+  .albumTitle{
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .albumDescription{
+      color: lightgray;
+      font-size: 0.875rem;
+  }
+  .albumCardsBackground{
+      width: 1236px;
+      height: 2312px;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+  }

@@ -1,8 +1,10 @@
 .Home-content-container {
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 75%;
-    height: 850px;
-  }
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 75%;
+  height: 850px;
+  background-color: black;
+}

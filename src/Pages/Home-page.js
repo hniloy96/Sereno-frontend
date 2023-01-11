@@ -1,19 +1,33 @@
-import React from "react";
-import './Home-page.css'
-import Nav from "../Components/Nav";
+import React, { useState } from 'react';
+import './Home-page.css';
+import '../Components/AlbumCard.css';
 
 function Home(props) {
-    return (
-        <div className="page">
-            <div className="Home-content-container">
-                <h5>THIS IS HOME PAGE</h5>
-            </div>
-            <div className="nav-bar">
-                <Nav />
-            </div>
-        </div>
+  const [album, setAlbum] = useState([]);
+  fetch('http://localhost:4000/album')
+    .then((data) => {
+      return data.json();
+    })
+    .then((albumData) => {
+      console.log(albumData);
+      setAlbum(albumData);
+    });
 
-    )
+  return (
+    <div className="Home-content-container">
+      {album.map((info, index) => {
+        return (
+          <div className="album" key={index}>
+            <img className="coverPhoto" src={info.image} alt="umbrella"></img>
+            <div className="albumText">
+              <div className="albumTitle">{info.title}</div>
+              <div className="albumDescription">{info.artist}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
-export default Home
+export default Home;

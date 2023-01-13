@@ -14,7 +14,6 @@ const Show = (props) => {
     })
 
     const { id } = useParams()
-    console.log(id)
     const navigate = useNavigate()
     const URL = `https://serenomusic.herokuapp.com/posts/${id}`
     const POST_URL = "https://serenomusic.herokuapp.com/interaction/"
@@ -24,7 +23,6 @@ const Show = (props) => {
         try {
             const response = await fetch(URL)
             const result = await response.json()
-            console.log(result.comments)
             setTimeout(() => {
                 setPost(result.post)
                 setComments(result.comments)
@@ -102,7 +100,6 @@ const Show = (props) => {
             const send = await fetch(POST_URL, requestOptions)
             const response = await fetch(URL)
             const createdComment = await response.json()
-            console.log(createdComment)
             setComments([...comments, createdComment])
         } catch (err) {
             console.log(err)

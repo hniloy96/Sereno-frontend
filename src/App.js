@@ -9,7 +9,6 @@ import Album from './Pages/Album-detail'
 
 import { UserContext } from './data';
 import { useState } from 'react'
-console.log(UserContext)
 
 function App() {
     const { Provider : UserInfo } = UserContext

@@ -19,7 +19,6 @@ const Feed = (props) => {
         try {
             const response = await fetch(BASE_URL)
             const allPosts = await response.json()
-            console.log(allPosts)
             setPosts(allPosts)
 
         } catch (err) {

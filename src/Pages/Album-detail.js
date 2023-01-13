@@ -16,7 +16,6 @@ const Show = (props) => {
         try {
             const response = await fetch(URL)
             const result = await response.json()
-            console.log(result)
             setTimeout(() => {
                 setAlbum(result)
                 setAllTracks(result.tracks)

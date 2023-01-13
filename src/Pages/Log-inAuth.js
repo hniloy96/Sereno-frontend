@@ -26,12 +26,10 @@ function Auth() {
             )
     
             const currentUser = await response.json()
-            //console.log(currentUser)
+     
     
             if (currentUser.token) {
-                // sets local storage
                 setUserToken(currentUser.token)
-                // put the returned user object in state
                 setUser(currentUser.user)
                 setAuth(currentUser.isLoggedIn)
     

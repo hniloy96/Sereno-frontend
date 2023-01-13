@@ -27,7 +27,6 @@ function Auth() {
             )
     
             const parsedUser = await newUser.json()
-            console.log(parsedUser)
         
             setUserToken(parsedUser.token)
            

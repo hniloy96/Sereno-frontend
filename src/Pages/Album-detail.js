@@ -6,6 +6,7 @@ import './Album.css'
 const Show = (props) => {
 
     const [album, setAlbum] = useState(null)
+    const [ allTracks, setAllTracks] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
     const URL = `http://localhost:4000/albums/${id}`
@@ -19,6 +20,7 @@ const Show = (props) => {
             console.log(result)
             setTimeout(() => {
                 setAlbum(result)
+                setAllTracks(result.tracks)
                 setLoading(false)
             })
 
@@ -33,6 +35,17 @@ const Show = (props) => {
         <>
         <div>
             <img className="cover" src={album.image} />
+            <h1>{album.title}</h1>
+            <h3>{album.artist}</h3>
+        </div>
+        <div>
+            {allTracks?.map((alltrack) => {
+                return (
+                <div>
+                    <h5>{alltrack}</h5>
+                </div>
+                )
+                        })}
         </div>
     
 

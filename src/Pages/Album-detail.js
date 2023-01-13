@@ -116,9 +116,9 @@ const Show = (props) => {
             }
             
             const send = await fetch(POST_URL, requestOptions)
-            const response = await fetch(URL)
-            const createdComment = await response.json()
-            setComments([...comments, createdComment.comments])
+            const result = await send.json()
+            console.log(result)
+            setComments([...comments, result])
             setNewForm({
                 comment: "",
                 album: `${id}`
@@ -127,8 +127,6 @@ const Show = (props) => {
         
         } catch (err) {
             console.log(err)
-        }finally {
-            navigate(`/home/`)
         }
     }
 

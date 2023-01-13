@@ -6,9 +6,8 @@ import { getUserToken } from "../utilities/authToken"
 
 const Feed = (props) => {
     // this page again follows a similar structure to the feed page! 
-    const token = getUserToken()
-    const [posts, setPosts] = useState([])
 
+    const [posts, setPosts] = useState([])
     const BASE_URL = "https://serenomusic.herokuapp.com/albums/"
 
     const getPosts = async () => {

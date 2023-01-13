@@ -101,9 +101,8 @@ const Show = (props) => {
             }
             
             const send = await fetch(POST_URL, requestOptions)
-            const response = await fetch(URL)
-            const createdComment = await response.json()
-            setComments([...comments, createdComment.comments])
+            const result = await send.json()
+            setComments([...comments, result])
             setNewForm({
                 comments: "",
                 post: `${id}`
@@ -113,8 +112,6 @@ const Show = (props) => {
 
         } catch (err) {
             console.log(err)
-        }finally {
-            navigate(`/feed/`)
         }
     }
 
@@ -141,7 +138,7 @@ const Show = (props) => {
             navigate('/feed')
         }
     }
-    
+
     const isLoading = () => (
         <section className="loading">
             <h1>

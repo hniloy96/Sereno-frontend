@@ -5,18 +5,19 @@ import { getUserToken } from "../utilities/authToken"
 
 const Show = (props) => {
 
+    const { id } = useParams()
     const token = getUserToken()
     const [post, setPost] = useState(null)
     const [comments, setComments] = useState(null)
     const [loading, setLoading] = useState(true)
     const [newForm, setNewForm] = useState({
         comments: "",
+        post: `${id}`
     })
-
-    const { id } = useParams()
+    
     const navigate = useNavigate()
     const URL = `https://serenomusic.herokuapp.com/posts/${id}`
-    const POST_URL = "https://serenomusic.herokuapp.com/interaction/"
+    const POST_URL = "http://localhost:4000/interaction/"
 
 
     const getPost = async () => {

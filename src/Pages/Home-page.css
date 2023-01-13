@@ -1,9 +1,10 @@
 .Home-content-container {
-    width: 75%;
-    height: 850px;
+    width: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #F7F5EB;
+    margin-right: 30px;
 
   }
 .tile {

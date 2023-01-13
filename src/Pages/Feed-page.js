@@ -13,7 +13,7 @@ const Feed = (props) => {
         comments: [],
     })
 
-    const BASE_URL = "http://localhost:4000/posts/"
+    const BASE_URL = "https://serenomusic.herokuapp.com/posts/"
 
     const getPosts = async () => {
         try {

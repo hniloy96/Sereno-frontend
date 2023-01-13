@@ -10,14 +10,13 @@ const Show = (props) => {
     const [comments, setComments] = useState(null)
     const [loading, setLoading] = useState(true)
     const [newForm, setNewForm] = useState({
-        comments: "",
+        body: "",
     })
 
     const { id } = useParams()
     console.log(id)
     const navigate = useNavigate()
     const URL = `http://localhost:4000/posts/${id}`
-    const POST_URL = "http://localhost:4000/interaction/"
 
 
     const getPost = async () => {
@@ -42,40 +41,19 @@ const Show = (props) => {
         <>
 
             <div className="Big-post">
-
-                <div>
-                    <Link to={`/post-update/${id}`}>
-                        <button className="update" >Edit</button>
-                    </Link>
-                    
-                    <button className="delete" onClick={removePost}>
-                        Delete post
-                    </button>
-                </div>
-                <h2>{post.body}</h2>
-                <form onSubmit={handleSubmitComment}>
-                    <input
-                        type="text"
-                        onChange={handleChange}
-                        placeholder='Type your comment'
-                        id="comments"
-                        name="comments"
-                        value={newForm.comments}
-                        required
-                    >
-
-                    </input>
-                    <button
-                        type="submit"
-                    >Comment</button>
+                <form onSubmit={updatePost}>
+                <input
+                                className="update-box"
+                                type='text'
+                                id="body"
+                                name="body"
+                                placeholder={post.body}
+                                value={newForm.body}
+                                onChange={handleChange}
+                                required
+                    />
+                    <button type="submit">Update</button>
                 </form>
-                <div>
-                    {comments?.map((comment) => {
-                        return (
-                            <h4>{comment.comments}</h4>
-                        )
-                    })}
-                </div>
             </div>
 
 
@@ -85,23 +63,23 @@ const Show = (props) => {
 
     )
 
-    const handleSubmitComment = async (e) => {
+    const updatePost = async (e) => {
         e.preventDefault()
         const currentState = { ...newForm }
         try {
             const requestOptions = {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(currentState)
             }
-            const send = await fetch(POST_URL, requestOptions)
-            const response = await fetch(URL)
+            const response = await fetch(URL, requestOptions)
             const createdComment = await response.json()
             console.log(createdComment)
             setComments([...comments, createdComment])
+            navigate(`/post/${id}`)
         } catch (err) {
             console.log(err)
         }
@@ -111,24 +89,6 @@ const Show = (props) => {
         const userInput = { ...newForm }
         userInput[e.target.name] = e.target.value
         setNewForm(userInput)
-    }
-
-    const removePost = async () => {
-        try {
-            const options = {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-            }
-
-            const response = await fetch(URL, options)
-            const deletedPerson = await response.json()
-        } catch (err) {
-            navigate(URL)
-        } finally {
-            navigate('/feed')
-        }
     }
 
     const isLoading = () => (

@@ -4,6 +4,7 @@ import Home from './Pages/Home-page';
 import Feed from './Pages/Feed-page';
 import SIGNUP from './Pages/Sign-upAuth';
 import Detailpost from './Pages/Post-detail'
+import Updatepost from './Pages/Post-update'
 import LOGIN from './Pages/Log-inAuth';
 
 import { UserContext } from './data';
@@ -32,6 +33,7 @@ function App() {
           <Route path='/home' element={< Home />} />
           <Route path="/feed" element={<Feed />} />
           <Route path='/post/:id' element={<Detailpost />} />
+          <Route path='/post-update/:id' element= {< Updatepost />} />
         </Routes>
       </div>
       </UserInfo>

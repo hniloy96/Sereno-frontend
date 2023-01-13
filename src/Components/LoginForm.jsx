@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../Pages/signin.css'
+import { Link } from 'react-router-dom';
 
 const LoginForm = ({ logIn }) => {
 
@@ -13,7 +14,7 @@ const LoginForm = ({ logIn }) => {
         const createdUserToken = await logIn(input)
 
         if (createdUserToken) {
-            navigate("/feed")
+            navigate("/home")
         } else {
             navigate("/")
         }
@@ -26,7 +27,7 @@ const LoginForm = ({ logIn }) => {
 
 
     return (
-        <section>
+        <section className='register-form'>
             <form className="login-form" onSubmit={handleSubmit}>
                 <h1 className="form-title">Log In</h1>
                 <label htmlFor='username'>
@@ -61,6 +62,9 @@ const LoginForm = ({ logIn }) => {
                     value="Log in"
                 />
             </form>
+            <Link className='link-container' to='/signup'>
+                <h3 className='link'>Sign Up Here</h3>
+            </Link>
         </section>
     )
 }

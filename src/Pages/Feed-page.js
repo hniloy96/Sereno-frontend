@@ -80,11 +80,12 @@ const Feed = (props) => {
     }
 
     const loading = () => (
-        <section className="people-list">
+        <section className="loading">
             <span>
                 <img
                     className="spinner"
                     src="https://freesvg.org/img/1544764567.png"
+                    alt="loading"
                 />{" "}
             </span>
         </section>

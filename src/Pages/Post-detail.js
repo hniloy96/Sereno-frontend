@@ -16,8 +16,8 @@ const Show = (props) => {
     const { id } = useParams()
     console.log(id)
     const navigate = useNavigate()
-    const URL = `http://localhost:4000/posts/${id}`
-    const POST_URL = "http://localhost:4000/interaction/"
+    const URL = `https://serenomusic.herokuapp.com/posts/${id}`
+    const POST_URL = "https://serenomusic.herokuapp.com/interaction/"
 
 
     const getPost = async () => {
@@ -43,18 +43,19 @@ const Show = (props) => {
 
             <div className="Big-post">
 
-                <div>
-                    <Link to={`/post-update/${id}`}>
-                        <button className="update" >Edit</button>
+                <div className="update-delete">
+                    <Link className="update" to={`/post-update/${id}`}>
+                        <button className="update-button">Edit</button>
                     </Link>
                     
-                    <button className="delete" onClick={removePost}>
+                    <button className="delete-button" onClick={removePost}>
                         Delete post
                     </button>
                 </div>
                 <h2>{post.body}</h2>
-                <form onSubmit={handleSubmitComment}>
-                    <input
+                <form className="comment-section" onSubmit={handleSubmitComment}>
+                    <input 
+                        className="write-comment"
                         type="text"
                         onChange={handleChange}
                         placeholder='Type your comment'
@@ -66,6 +67,7 @@ const Show = (props) => {
 
                     </input>
                     <button
+                        className="submit-comment"
                         type="submit"
                     >Comment</button>
                 </form>
@@ -132,13 +134,14 @@ const Show = (props) => {
     }
 
     const isLoading = () => (
-        <section className="people-list">
+        <section className="loading">
             <h1>
                 Loading...
                 <span>
                     <img
                         className="spinner"
                         src="https://freesvg.org/img/1544764567.png"
+                        alt="loading"
                     />{" "}
                 </span>
             </h1>

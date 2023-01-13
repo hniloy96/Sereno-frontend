@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 75%;
-    height: 850px;
+    width: 65%;
+    height: 100vw;
+    background-color: #ECECEC;
   }
 
 .signup-form {
@@ -81,3 +82,10 @@
     height: 45px;
     border-radius: 25px;
 }
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

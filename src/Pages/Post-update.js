@@ -16,7 +16,7 @@ const Show = (props) => {
     const { id } = useParams()
     console.log(id)
     const navigate = useNavigate()
-    const URL = `http://localhost:4000/posts/${id}`
+    const URL = `https://serenomusic.herokuapp.com/posts/${id}`
 
 
     const getPost = async () => {
@@ -41,9 +41,9 @@ const Show = (props) => {
         <>
 
             <div className="Big-post">
-                <form onSubmit={updatePost}>
+                <form className="comment-section" onSubmit={updatePost}>
                 <input
-                                className="update-box"
+                                className="write-comment"
                                 type='text'
                                 id="body"
                                 name="body"
@@ -52,7 +52,7 @@ const Show = (props) => {
                                 onChange={handleChange}
                                 required
                     />
-                    <button type="submit">Update</button>
+                    <button className="submit-comment" type="submit">Update</button>
                 </form>
             </div>
 
@@ -92,13 +92,14 @@ const Show = (props) => {
     }
 
     const isLoading = () => (
-        <section className="people-list">
+        <section className="loading">
             <h1>
                 Loading...
                 <span>
                     <img
                         className="spinner"
                         src="https://freesvg.org/img/1544764567.png"
+                        alt="loading"
                     />{" "}
                 </span>
             </h1>

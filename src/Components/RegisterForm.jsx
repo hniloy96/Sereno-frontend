@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const RegisterForm = ({ signUp }) => {
 
@@ -12,7 +13,7 @@ const RegisterForm = ({ signUp }) => {
         const createdUserToken = await signUp(input)
 
         if (createdUserToken) {
-            navigate("/feed")
+            navigate("/home")
         } else {
             navigate("/")
         }
@@ -25,7 +26,7 @@ const RegisterForm = ({ signUp }) => {
 
 
     return (
-        <section>
+        <section className='register-form'>
             <form className="signup-form" onSubmit={handleSubmit}>
                 <h1 className="form-title">Sign Up</h1>
                 <label htmlFor='username'>
@@ -112,6 +113,9 @@ const RegisterForm = ({ signUp }) => {
                     value="Sign Up"
                 />
             </form>
+            <Link className='link-container' to='/'>
+                    <h3 className='link'>Log in Here</h3>
+                </Link>
         </section>
     )
 }

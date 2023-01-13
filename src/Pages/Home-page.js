@@ -8,12 +8,8 @@ const Feed = (props) => {
 
     const token = getUserToken()
     const [posts, setPosts] = useState([])
-    const [newForm, setNewForm] = useState({
-        body: "",
-        comments: [],
-    })
 
-    const BASE_URL = "http://localhost:4000/albums/"
+    const BASE_URL = "https://serenomusic.herokuapp.com/albums/"
 
     const getPosts = async () => {
         try {
@@ -35,7 +31,7 @@ const Feed = (props) => {
                         return (
                             <Link key={post._id} to={`/album/${post._id}`}>
                              <div className="tile" >
-                                <img className="image" src={post.image} />
+                                <img className="image" src={post.image} alt="cover-art"/>
                                 <h1 className="text">{post.title}</h1>
                             </div>
                             </Link>
@@ -50,11 +46,12 @@ const Feed = (props) => {
     }
 
     const loading = () => (
-        <section className="people-list">
+        <section className="loading">
             <span>
                 <img
                     className="spinner"
                     src="https://freesvg.org/img/1544764567.png"
+                    alt="loading"
                 />{" "}
             </span>
         </section>

@@ -176,6 +176,34 @@ code {
   color: white;
 }
 
+.album-comment-section {
+  text-align: left;
+  margin-top: 10px;
+  background-color: #404258;
+  border: 1px solid #404258;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.compose-album-comment {
+  margin-top: 20px;
+}
+
+.album-comments {
+  border: 2px solid white;
+  width: 400px;
+  height: 40px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
 .log-out {
   width: 100px;
   height: 40px;

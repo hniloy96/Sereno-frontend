@@ -15,9 +15,10 @@ const Show = (props) => {
         post: `${id}`
     })
     
+    // this page follows a smililar structure to album-detail page except an extra delete function and edit panel. 
     const navigate = useNavigate()
     const URL = `https://serenomusic.herokuapp.com/posts/${id}`
-    const POST_URL = "http://localhost:4000/interaction/"
+    const POST_URL = "https://serenomusic.herokuapp.com/interaction/"
 
 
     const getPost = async () => {
@@ -98,12 +99,22 @@ const Show = (props) => {
                 },
                 body: JSON.stringify(currentState)
             }
+            
             const send = await fetch(POST_URL, requestOptions)
             const response = await fetch(URL)
             const createdComment = await response.json()
-            setComments([...comments, createdComment])
+            setComments([...comments, createdComment.comments])
+            setNewForm({
+                comments: "",
+                post: `${id}`
+            })
+            
+            
+
         } catch (err) {
             console.log(err)
+        }finally {
+            navigate(`/feed/`)
         }
     }
 
@@ -112,7 +123,7 @@ const Show = (props) => {
         userInput[e.target.name] = e.target.value
         setNewForm(userInput)
     }
-
+    // this is to delete the post
     const removePost = async () => {
         try {
             const options = {
@@ -130,7 +141,7 @@ const Show = (props) => {
             navigate('/feed')
         }
     }
-
+    
     const isLoading = () => (
         <section className="loading">
             <h1>

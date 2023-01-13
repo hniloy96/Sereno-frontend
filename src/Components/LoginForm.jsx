@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../Pages/signin.css'
 import { Link } from 'react-router-dom';
-
+// login for logging in, being rendered in sign-upAuth page
 const LoginForm = ({ logIn }) => {
 
     const initialState = { username: "", password: "" }

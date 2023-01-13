@@ -1,24 +1,36 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import Nav from "../Components/Nav"
+import { getUserToken } from "../utilities/authToken"
+import { useNavigate } from "react-router-dom"
 
 const Show = (props) => {
 
+    const token = getUserToken()
     const [album, setAlbum] = useState(null)
-    const [ allTracks, setAllTracks] = useState(null)
+    const [comments, setComments] = useState(null)
+    const [allTracks, setAllTracks] = useState(null)
     const [loading, setLoading] = useState(true)
     const { id } = useParams()
+    const [newForm, setNewForm] = useState({
+        comment: "",
+        album: `${id}`
+    })
+    
+    //These are the two links, one for the api call and another is for posting the comments
     const URL = `https://serenomusic.herokuapp.com/albums/${id}`
-   
+    const POST_URL = "https://serenomusic.herokuapp.com/comments/"
+    const navigate = useNavigate()
 
-
+    //getting the posts from the api
     const getPost = async () => {
         try {
             const response = await fetch(URL)
             const result = await response.json()
             setTimeout(() => {
-                setAlbum(result)
-                setAllTracks(result.tracks)
+                setAlbum(result.album)
+                setComments(result.comments)
+                setAllTracks(result.album.tracks)
                 setLoading(false)
             })
 
@@ -27,8 +39,14 @@ const Show = (props) => {
         }
     }
 
+    //calling on change with these to type into the form
+    const handleChange = (e) => {
+        const userInput = { ...newForm }
+        userInput[e.target.name] = e.target.value
+        setNewForm(userInput)
+    }
 
-
+    //loading all the data from the api, the album title, artist, tracks and comments
     const loaded = () => (
         <>
         <div className="album-top">
@@ -50,11 +68,70 @@ const Show = (props) => {
                 )
                         })}
         </div>
+        <div className="album-comment-section">
+        <form className="compose-album-comment"  onSubmit={handleSubmitComment}>
+                    <input 
+                        className="write-comment"
+                        type="text"
+                        onChange={handleChange}
+                        placeholder='Type your comment'
+                        id="comment"
+                        name="comment"
+                        value={newForm.comment}
+                        required
+                    >
+
+                    </input>
+                    <button
+                        className="submit-comment"
+                        type="submit"
+                    >Comment</button>
+                </form>
+                <div >
+                    {comments?.map((comment) => {
+                        return (
+                            <h4 className="album-comments">{comment.comment}</h4>
+                        )
+                    })}
+                </div>
+        </div>
     
 
         </>
 
     )
+    
+    // this is submiting our comment to the backend 
+    const handleSubmitComment = async (e) => {
+        e.preventDefault()
+        const currentState = { ...newForm }
+        try {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(currentState)
+            }
+            
+            const send = await fetch(POST_URL, requestOptions)
+            const response = await fetch(URL)
+            const createdComment = await response.json()
+            setComments([...comments, createdComment.comments])
+            setNewForm({
+                comment: "",
+                album: `${id}`
+            })
+            
+        
+        } catch (err) {
+            console.log(err)
+        }finally {
+            navigate(`/home/`)
+        }
+    }
+
 
     const isLoading = () => (
         <section className="loading">
@@ -71,11 +148,12 @@ const Show = (props) => {
         </section>
     );
 
-
+        // calling the api though use effect
     useEffect(() => {
         getPost()
     }, [])
 
+    // rending the info
     return (
         <div className="page">
             <div className="Feed-content-container">

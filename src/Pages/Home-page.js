@@ -5,7 +5,7 @@ import Nav from "../Components/Nav"
 import { getUserToken } from "../utilities/authToken"
 
 const Feed = (props) => {
-
+    // this page again follows a similar structure to the feed page! 
     const token = getUserToken()
     const [posts, setPosts] = useState([])
 

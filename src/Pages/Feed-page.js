@@ -12,9 +12,9 @@ const Feed = (props) => {
         body: "",
         comments: [],
     })
-
+    // api link
     const BASE_URL = "https://serenomusic.herokuapp.com/posts/"
-
+    // getting all the posts
     const getPosts = async () => {
         try {
             const response = await fetch(BASE_URL)
@@ -25,7 +25,7 @@ const Feed = (props) => {
             console.log(err)
         }
     }
-
+    // submitting and rendering new post
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...newForm }
@@ -89,11 +89,12 @@ const Feed = (props) => {
             </span>
         </section>
     );
-
+        // api call
     useEffect(() => {
         getPosts()
     }, [])
 
+    // rendering all the info
     return (
         <div className="page">
             <div className="Feed-content-container">

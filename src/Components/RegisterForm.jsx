@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+// registerform for signing up being rendered in sign-upAuth page
 const RegisterForm = ({ signUp }) => {
 
     const initialState = { username: "", password: "" }

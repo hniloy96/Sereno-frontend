@@ -3,11 +3,11 @@ import { clearUserToken } from "../utilities/authToken"
 import { useNavigate } from "react-router-dom";
 
 
-
+// rendering the nav bar that is ever so present thoughout all the pages! 
 const Nav = (props) => {
 
     const navigation = useNavigate()
-
+    // to delete token and user info for logging out purposes 
     const handleSubmit = async (e) => {
        clearUserToken()
        navigation('/')

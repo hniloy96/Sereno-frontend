@@ -6,6 +6,7 @@ import SIGNUP from './Pages/Sign-upAuth';
 import Detailpost from './Pages/Post-detail'
 import Updatepost from './Pages/Post-update'
 import LOGIN from './Pages/Log-inAuth';
+import Album from './Pages/Album-detail'
 
 import { UserContext } from './data';
 import { useState } from 'react'
@@ -16,7 +17,6 @@ function App() {
 
     const [ isAuthenticated, setIsAuthenticated] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
-
 
   return (
     <div className='App'>
@@ -34,6 +34,7 @@ function App() {
           <Route path="/feed" element={<Feed />} />
           <Route path='/post/:id' element={<Detailpost />} />
           <Route path='/post-update/:id' element= {< Updatepost />} />
+          <Route path='/album/:id' element= {< Album />} />
         </Routes>
       </div>
       </UserInfo>

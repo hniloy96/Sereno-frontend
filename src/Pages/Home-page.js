@@ -13,7 +13,7 @@ const Feed = (props) => {
         comments: [],
     })
 
-    const BASE_URL = "http://localhost:4000/album/"
+    const BASE_URL = "http://localhost:4000/albums/"
 
     const getPosts = async () => {
         try {
@@ -33,10 +33,13 @@ const Feed = (props) => {
                 <section >
                     {posts?.map((post) => {
                         return (
-                            <div className="tile" key={post._id}>
+                            <Link key={post._id} to={`/album/${post._id}`}>
+                             <div className="tile" >
                                 <img className="image" src={post.image} />
-                                <p className="text">{post.title}</p>
+                                <h1 className="text">{post.title}</h1>
                             </div>
+                            </Link>
+                           
 
                         )
                     })
